@@ -10,6 +10,12 @@ class User(Base):
     name = Column(String)
     email = Column(String)
 
+class Order(Base):
+    id = Column(Integer, primary_key=True)
+    status = Column(String)
+
+
 Base.metadata.create_all(engine)
 Session = sessionmaker(bind=engine)
 session = Session()
+
