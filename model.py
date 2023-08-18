@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, create_engine
+from sqlalchemy import Column, Integer, String, create_engine, ForeignKey
 from sqlalchemy.orm import relationship, sessionmaker, declarative_base
 
 engine = create_engine('sqlite:///:memory:')
@@ -13,6 +13,7 @@ class User(Base):
 class Order(Base):
     id = Column(Integer, primary_key=True)
     status = Column(String)
+    user_id = Column(Integer, ForeignKey("user.id"))
 
 
 Base.metadata.create_all(engine)
